@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
 const Job = ({ job }) => {
   const {
+    id,
     logo,
     job_title,
     company_name,
@@ -32,9 +35,11 @@ const Job = ({ job }) => {
           {location}
         </p>
       </div>
-      <button className="p-3 bg-sky-600 mt-2  text-white rounded-lg">
-        View Details
-      </button>
+      <Link to={`/job/${id}`}>
+        <button className="p-3 btn bg-sky-600 mt-2  text-white rounded-lg">
+          View Details
+        </button>
+      </Link>
     </div>
   );
 };
