@@ -1,9 +1,14 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { saveJobApplication } from "../../utility/localStorage";
 
 const JobDetails = () => {
   const jobs = useLoaderData();
   const { id } = useParams();
   const job = jobs.find((job) => job.id === parseInt(id));
+
+  const handleApply = () => {
+    saveJobApplication(parseInt(id));
+  };
 
   return (
     <div className="mb-16">
@@ -33,7 +38,10 @@ const JobDetails = () => {
           <p>Email : {job.contact_information.email}</p>
           <p>Address : {job.contact_information.address}</p>
           <div className="flex justify-center">
-            <button className="btn bg-sky-400 text-white w-full mt-3">
+            <button
+              onClick={handleApply}
+              className="btn bg-sky-400 text-white w-full mt-3"
+            >
               Apply Now
             </button>
           </div>
