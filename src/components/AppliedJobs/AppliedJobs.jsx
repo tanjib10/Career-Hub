@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { getStoredJobApplication } from "../../utility/localStorage";
+import AppliedJob from "../AppliedJob/AppliedJob";
 
 const AppliedJobs = () => {
   const jobs = useLoaderData();
@@ -19,8 +20,15 @@ const AppliedJobs = () => {
     }
   }, []);
   return (
-    <div>
-      <h3>Jobs i have applied : {appliedJobs.length} </h3>
+    <div className="mt-8">
+      <h3 className="text-center text-lg font-bold">
+        Jobs you have applied : {appliedJobs.length}{" "}
+      </h3>
+      <div>
+        {appliedJobs.map((job) => (
+          <AppliedJob key={job.id} job={job}></AppliedJob>
+        ))}
+      </div>
     </div>
   );
 };
